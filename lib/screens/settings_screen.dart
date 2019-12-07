@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../widgets/widgets.dart';
 import '../blocs/theme_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -10,8 +9,10 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _themeBloc = Provider.of<ThemeBloc>(context);
 
-    return SimpleScaffold(
-      title: 'Settings',
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
       body: ListView(
         children: [
           ListTile(
@@ -41,13 +42,6 @@ class SettingsScreen extends StatelessWidget {
               _themeBloc.themeMode = mode;
             },
           ),
-          // SwitchListTile(
-          //   title: Text('Enable dark mode'),
-          //   value: _themeBloc.darkModeEnabled,
-          //   onChanged: (bool value) {
-          //     _themeBloc.changeTheme(value);
-          //   },
-          // ),
         ],
       ),
     );

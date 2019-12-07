@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
-import '../widgets/widgets.dart';
-
 BottomNavigationBarItem _barItem({
   String title,
   IconData icon,
@@ -61,14 +59,10 @@ class _BottomBarState extends State<BottomBar> {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SimpleScaffold(
-      title: 'Cafeteria',
-      actions: [
-        IconButton(
-          icon: Icon(Icons.more_vert),
-          onPressed: () {},
-        ),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cafeteria'),
+      ),
       body: ListView(
         children: [
           ListTile(
@@ -83,7 +77,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomBar: BottomBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
