@@ -4,13 +4,14 @@ description: Cafeteria order automatization
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.5.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   
   provider: ^3.2.0
+  outline_material_icons: ^0.1.1
 
 dev_dependencies:
   flutter_test:
