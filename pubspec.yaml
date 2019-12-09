@@ -23,13 +23,40 @@ flutter:
   fonts:
     - family: BebasNeue
       fonts:
-        - asset: fonts/BebasNeue-Regular.ttf
+        - asset: fonts/BebasNeue/BebasNeue-Regular.ttf
+    - family: Calistoga
+      fonts:
+        - asset: fonts/Calistoga/Calistoga-Regular.ttf
+    - family: JosefinSans
+      fonts:
+        - asset: fonts/JosefinSans/JosefinSans-Bold.ttf
+        - asset: fonts/JosefinSans/JosefinSans-BoldItalic.ttf
+        - asset: fonts/JosefinSans/JosefinSans-Italic.ttf
+        - asset: fonts/JosefinSans/JosefinSans-Light.ttf
+        - asset: fonts/JosefinSans/JosefinSans-LightItalic.ttf
+        - asset: fonts/JosefinSans/JosefinSans-Regular.ttf
+        - asset: fonts/JosefinSans/JosefinSans-SemiBold.ttf
+        - asset: fonts/JosefinSans/JosefinSans-SemiBoldItalic.ttf
+        - asset: fonts/JosefinSans/JosefinSans-Thin.ttf
+        - asset: fonts/JosefinSans/JosefinSans-ThinItalic.ttf
+    - family: Lato
+      fonts:
+        - asset: fonts/Lato/Lato-Black.ttf
+        - asset: fonts/Lato/Lato-BlackItalic.ttf
+        - asset: fonts/Lato/Lato-Bold.ttf
+        - asset: fonts/Lato/Lato-BoldItalic.ttf
+        - asset: fonts/Lato/Lato-Italic.ttf
+        - asset: fonts/Lato/Lato-Light.ttf
+        - asset: fonts/Lato/Lato-LightItalic.ttf
+        - asset: fonts/Lato/Lato-Regular.ttf
+        - asset: fonts/Lato/Lato-Thin.ttf
+        - asset: fonts/Lato/Lato-ThinItalic.ttf
     - family: SulphurPoint
       fonts:
-        - asset: fonts/SulphurPoint-Regular.ttf
+        - asset: fonts/SulphurPoint/SulphurPoint-Regular.ttf
           weight: 400
-        - asset: fonts/SulphurPoint-Light.ttf
+        - asset: fonts/SulphurPoint/SulphurPoint-Light.ttf
           weight: 300
-        - asset: fonts/SulphurPoint-Bold.ttf
+        - asset: fonts/SulphurPoint/SulphurPoint-Bold.ttf
           weight: 700
   

@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 
 final lightTheme = ThemeData(
-  fontFamily: 'SulphurPoint',
+  fontFamily: 'JosefinSans',
   brightness: Brightness.light,
-  primarySwatch: Colors.deepOrange,
-  appBarTheme: _appBarTheme,
+  primaryColor: Colors.white,
+  primaryColorDark: Colors.white,
+  accentColor: Colors.black,
+  // appBarTheme: _appBarTheme,
 );
 
 final darkTheme = ThemeData(
-  fontFamily: 'SulphurPoint',
+  fontFamily: 'JosefinSans',
   brightness: Brightness.dark,
   primarySwatch: Colors.grey,
-  appBarTheme: _appBarTheme,
+  accentColor: Colors.white,
+  // appBarTheme: _appBarTheme,
 );
 
-final _appBarTheme = AppBarTheme(
-  textTheme: TextTheme(
-    title: TextStyle(
-      fontFamily: 'SulphurPoint',
-      fontWeight: FontWeight.bold,
-      fontSize: 26,
-    ),
-  ),
-);
+// final _appBarTheme = AppBarTheme(
+//   textTheme: TextTheme(
+//     title: TextStyle(
+//       color: Colors.black,
+//       fontFamily: 'JosefinSans',
+//       fontWeight: FontWeight.bold,
+//       fontSize: 24,
+//     ),
+//   ),
+// );

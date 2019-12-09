@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:provider/provider.dart';
 
-// import '../blocs/navbar_bloc.dart';
-
 BottomNavigationBarItem _barItem({
   String title,
   IconData icon,
@@ -41,6 +39,7 @@ class BottomBar extends StatelessWidget {
 
     return BottomNavigationBar(
       currentIndex: _index.value,
+      selectedItemColor: Theme.of(context).accentColor,
       onTap: (int index) => _index.value = index,
       showUnselectedLabels: false,
       items: _barItems,
@@ -54,33 +53,51 @@ class HomeView extends StatelessWidget {
     final _index = Provider.of<ValueNotifier<int>>(context);
 
     if (_index.value == 0) {
-      return ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Login Screen'),
-            leading: Icon(OMIcons.person),
-            onTap: () => Navigator.pushNamed(context, '/login'),
-          ),
-          ListTile(
-            title: Text('Settings Screen'),
-            leading: Icon(OMIcons.settings),
-            onTap: () => Navigator.pushNamed(context, '/settings'),
-          ),
-        ],
+      return Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              padding: EdgeInsets.all(5),
+              child: Row(
+                children: <Widget>[
+                  Icon(OMIcons.personOutline),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('Login'),
+                ],
+              ),
+              onPressed: () => Navigator.pushNamed(context, '/login'),
+            ),
+          ],
+        ),
       );
     } else if (_index.value == 1) {
       return Center(
-        child: Icon(
-          Icons.receipt,
-          size: 40,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.receipt,
+              size: 40,
+            ),
+            Text('Make a new order...')
+          ],
         ),
       );
     }
 
     return Center(
-      child: Icon(
-        Icons.history,
-        size: 40,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.history,
+            size: 40,
+          ),
+          Text('History of orders...')
+        ],
       ),
     );
   }
@@ -93,8 +110,15 @@ class HomeScreen extends StatelessWidget {
       value: ValueNotifier(0),
       child: Scaffold(
         appBar: AppBar(
+          // brightness: Brightness.light,
           centerTitle: true,
           title: Text('Cafeteria'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(OMIcons.settings),
+              onPressed: () => Navigator.pushNamed(context, '/settings'),
+            ),
+          ],
         ),
         body: HomeView(),
         bottomNavigationBar: BottomBar(),
