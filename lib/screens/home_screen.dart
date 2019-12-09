@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:provider/provider.dart';
+
+// import '../blocs/navbar_bloc.dart';
 
 BottomNavigationBarItem _barItem({
   String title,
@@ -13,14 +16,7 @@ BottomNavigationBarItem _barItem({
   );
 }
 
-class BottomBar extends StatefulWidget {
-  @override
-  _BottomBarState createState() => _BottomBarState();
-}
-
-class _BottomBarState extends State<BottomBar> {
-  int _index = 0;
-
+class BottomBar extends StatelessWidget {
   final _barItems = [
     _barItem(
       title: 'Home',
@@ -39,32 +35,27 @@ class _BottomBarState extends State<BottomBar> {
     ),
   ];
 
-  void _onTap(int index) {
-    setState(() {
-      _index = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final _index = Provider.of<ValueNotifier<int>>(context);
+
     return BottomNavigationBar(
-      currentIndex: _index,
-      onTap: _onTap,
+      currentIndex: _index.value,
+      onTap: (int index) => _index.value = index,
       showUnselectedLabels: false,
       items: _barItems,
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cafeteria'),
-      ),
-      body: ListView(
-        children: [
+    final _index = Provider.of<ValueNotifier<int>>(context);
+
+    if (_index.value == 0) {
+      return ListView(
+        children: <Widget>[
           ListTile(
             title: Text('Login Screen'),
             leading: Icon(OMIcons.person),
@@ -76,8 +67,38 @@ class HomeScreen extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, '/settings'),
           ),
         ],
+      );
+    } else if (_index.value == 1) {
+      return Center(
+        child: Icon(
+          Icons.receipt,
+          size: 40,
+        ),
+      );
+    }
+
+    return Center(
+      child: Icon(
+        Icons.history,
+        size: 40,
       ),
-      bottomNavigationBar: BottomBar(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider.value(
+      value: ValueNotifier(0),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Cafeteria'),
+        ),
+        body: HomeView(),
+        bottomNavigationBar: BottomBar(),
+      ),
     );
   }
 }

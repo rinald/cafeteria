@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cafeteria/app.dart';
+import './app.dart';
 
 main() => runApp(App());
