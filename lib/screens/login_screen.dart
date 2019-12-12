@@ -8,7 +8,18 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('Login'),
       ),
-      body: Container(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.person,
+              size: 40,
+            ),
+            Text('Login page...')
+          ],
+        ),
+      ),
     );
   }
 }

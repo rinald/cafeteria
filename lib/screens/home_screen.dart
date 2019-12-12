@@ -58,7 +58,10 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.symmetric(
+                vertical: 5,
+                horizontal: 20,
+              ),
               child: Row(
                 children: <Widget>[
                   Icon(OMIcons.personOutline),
