@@ -1,29 +1,44 @@
 import 'package:flutter/material.dart';
 
+import './colors.dart';
+
+final baseLightTheme = ThemeData.light();
+final baseDarkTheme = ThemeData.dark();
+
 final lightTheme = ThemeData(
   fontFamily: 'JosefinSans',
   brightness: Brightness.light,
-  primaryColor: Colors.white,
-  primaryColorDark: Colors.white,
-  accentColor: Colors.black,
-  // appBarTheme: _appBarTheme,
+  primaryColor: lightPrimary,
+  primaryColorDark: lightPrimaryDark,
+  accentColor: lightAccent,
+  buttonTheme: baseLightTheme.buttonTheme.copyWith(
+    colorScheme: baseLightTheme.buttonTheme.colorScheme.copyWith(
+      primary: lightAccent,
+    ),
+    textTheme: ButtonTextTheme.primary,
+    buttonColor: lightPrimaryDark,
+  ),
+  scaffoldBackgroundColor: lightPrimary,
+  primaryIconTheme: IconThemeData(
+    color: lightAccent,
+  ),
 );
 
 final darkTheme = ThemeData(
   fontFamily: 'JosefinSans',
   brightness: Brightness.dark,
-  primarySwatch: Colors.grey,
-  accentColor: Colors.white,
-  // appBarTheme: _appBarTheme,
+  primaryColor: darkPrimary,
+  primaryColorDark: darkPrimaryDark,
+  accentColor: darkAccent,
+  buttonTheme: baseLightTheme.buttonTheme.copyWith(
+    colorScheme: baseLightTheme.buttonTheme.colorScheme.copyWith(
+      primary: darkAccent,
+    ),
+    textTheme: ButtonTextTheme.primary,
+    buttonColor: darkPrimaryDark,
+  ),
+  scaffoldBackgroundColor: darkPrimaryLight,
+  primaryIconTheme: IconThemeData(
+    color: darkAccent,
+  ),
 );
-
-// final _appBarTheme = AppBarTheme(
-//   textTheme: TextTheme(
-//     title: TextStyle(
-//       color: Colors.black,
-//       fontFamily: 'JosefinSans',
-//       fontWeight: FontWeight.bold,
-//       fontSize: 24,
-//     ),
-//   ),
-// );

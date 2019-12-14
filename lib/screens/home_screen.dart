@@ -38,6 +38,7 @@ class BottomBar extends StatelessWidget {
     final _index = Provider.of<ValueNotifier<int>>(context);
 
     return BottomNavigationBar(
+      backgroundColor: Theme.of(context).primaryColor,
       currentIndex: _index.value,
       selectedItemColor: Theme.of(context).accentColor,
       onTap: (int index) => _index.value = index,
@@ -113,7 +114,6 @@ class HomeScreen extends StatelessWidget {
       value: ValueNotifier(0),
       child: Scaffold(
         appBar: AppBar(
-          // brightness: Brightness.light,
           centerTitle: true,
           title: Text('Cafeteria'),
           actions: <Widget>[

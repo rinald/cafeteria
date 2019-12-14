@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/screens.dart';
-// import './blocs/theme_bloc.dart';
 import './themes.dart';
 
 class _App extends StatelessWidget {
@@ -27,8 +26,6 @@ class _App extends StatelessWidget {
 }
 
 class App extends StatelessWidget {
-  // final _themeBloc = ThemeBloc();
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
