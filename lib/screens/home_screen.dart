@@ -55,24 +55,66 @@ class HomeView extends StatelessWidget {
 
     if (_index.value == 0) {
       return Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              padding: EdgeInsets.symmetric(
-                vertical: 5,
-                horizontal: 20,
-              ),
-              child: Row(
-                children: <Widget>[
-                  Icon(OMIcons.personOutline),
-                  SizedBox(
-                    width: 10,
+            Icon(
+              Icons.restaurant_menu,
+              size: 150,
+            ),
+            SizedBox(
+              height: 150,
+            ),
+            Row(
+              children: <Widget>[
+                Spacer(),
+                Expanded(
+                  flex: 3,
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 20,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.person),
+                        Spacer(
+                          flex: 1,
+                        ),
+                        Text('Login'),
+                        Spacer(
+                          flex: 1,
+                        ),
+                      ],
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, '/login'),
                   ),
-                  Text('Login'),
-                ],
-              ),
-              onPressed: () => Navigator.pushNamed(context, '/login'),
+                ),
+                Spacer(),
+                Expanded(
+                  flex: 3,
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 20,
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.info),
+                        Spacer(
+                          flex: 1,
+                        ),
+                        Text('About'),
+                        Spacer(
+                          flex: 1,
+                        ),
+                      ],
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, '/settings'),
+                  ),
+                ),
+                Spacer(),
+              ],
             ),
           ],
         ),
@@ -114,7 +156,7 @@ class HomeScreen extends StatelessWidget {
       value: ValueNotifier(0),
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
+          // centerTitle: true,
           title: Text('Cafeteria'),
           actions: <Widget>[
             IconButton(

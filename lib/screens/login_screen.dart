@@ -18,16 +18,20 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextFormField(
+            TextField(
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
               ),
             ),
-            TextFormField(
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
+                focusColor: Colors.blue,
                 labelText: 'Password',
               ),
             ),
@@ -37,8 +41,6 @@ class LoginScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               child: RaisedButton(
-                // color: Colors.black,
-                // textColor: Colors.white,
                 child: Text('Login'),
                 onPressed: () {
                   print('Pressed!');
@@ -48,7 +50,15 @@ class LoginScreen extends StatelessWidget {
             Container(
               alignment: Alignment.centerRight,
               child: FlatButton(
-                child: Text('Forgot Password?'),
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                textColor: Theme.of(context).accentColor,
+                child: Text(
+                  'Forgot password?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   print('You forgot your password.');
                 },
@@ -59,7 +69,15 @@ class LoginScreen extends StatelessWidget {
               children: <Widget>[
                 Text("Don't have an account?"),
                 FlatButton(
-                  child: Text('Sign up'),
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  textColor: Theme.of(context).accentColor,
+                  child: Text(
+                    'Sign up',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   onPressed: () {
                     print('Sign up...');
                   },
