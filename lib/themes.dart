@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:google_fonts/google_fonts.dart';
+
 import './colors.dart';
 
 final baseLightTheme = ThemeData.light();
 final baseDarkTheme = ThemeData.dark();
 
-final lightTheme = ThemeData(
+final lightTextTheme =
+    GoogleFonts.josefinSansTextTheme(baseLightTheme.textTheme);
+final darkTextTheme = GoogleFonts.josefinSansTextTheme(baseDarkTheme.textTheme);
+
+final lightTheme = baseLightTheme.copyWith(
   platform: TargetPlatform.iOS,
-  fontFamily: 'JosefinSans',
   brightness: Brightness.light,
+  textTheme: lightTextTheme,
   primaryColor: lightPrimary,
   primaryColorLight: lightPrimaryLight,
   primaryColorDark: lightPrimaryDark,
@@ -26,7 +32,7 @@ final lightTheme = ThemeData(
     buttonColor: lightSecondary,
   ),
   cursorColor: lightSecondary,
-  scaffoldBackgroundColor: lightPrimaryDark,
+  scaffoldBackgroundColor: lightPrimary,
   primaryIconTheme: IconThemeData(
     color: lightSecondary,
   ),
@@ -48,12 +54,21 @@ final lightTheme = ThemeData(
       ),
     ),
   ),
+  appBarTheme: baseLightTheme.appBarTheme.copyWith(
+    textTheme: TextTheme(
+      title: lightTextTheme.title.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+      ),
+    ),
+    elevation: 0,
+  ),
 );
 
-final darkTheme = ThemeData(
+final darkTheme = baseDarkTheme.copyWith(
   platform: TargetPlatform.iOS,
-  fontFamily: 'JosefinSans',
   brightness: Brightness.dark,
+  textTheme: darkTextTheme,
   primaryColor: darkPrimary,
   primaryColorLight: darkPrimaryLight,
   primaryColorDark: darkPrimaryDark,
@@ -92,5 +107,14 @@ final darkTheme = ThemeData(
         width: 2,
       ),
     ),
+  ),
+  appBarTheme: baseDarkTheme.appBarTheme.copyWith(
+    textTheme: TextTheme(
+      title: darkTextTheme.title.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+      ),
+    ),
+    elevation: 0,
   ),
 );

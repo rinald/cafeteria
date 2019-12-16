@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets.dart' show TappableText;
 
 class LoginScreen extends StatelessWidget {
   final _emailController = TextEditingController();
@@ -49,16 +50,8 @@ class LoginScreen extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.centerRight,
-              child: FlatButton(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                textColor: Theme.of(context).accentColor,
-                child: Text(
-                  'Forgot password?',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              child: TappableText(
+                'Forgot your password?',
                 onPressed: () {
                   print('You forgot your password.');
                 },
@@ -68,16 +61,8 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text("Don't have an account?"),
-                FlatButton(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  textColor: Theme.of(context).accentColor,
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                TappableText(
+                  'Sign up',
                   onPressed: () {
                     print('Sign up...');
                   },

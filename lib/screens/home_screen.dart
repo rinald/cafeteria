@@ -1,35 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
-import 'package:provider/provider.dart';
-
-BottomNavigationBarItem _barItem({
-  String title,
-  IconData icon,
-  IconData activeIcon,
-}) {
-  return BottomNavigationBarItem(
-    title: Text(title),
-    icon: Icon(icon),
-    activeIcon: Icon(activeIcon),
-  );
-}
+import 'package:provider/provider.dart' show ChangeNotifierProvider, Provider;
 
 class BottomBar extends StatelessWidget {
   final _barItems = [
-    _barItem(
-      title: 'Home',
-      icon: OMIcons.home,
-      activeIcon: Icons.home,
+    BottomNavigationBarItem(
+      title: Text('Home'),
+      icon: Icon(Icons.home),
     ),
-    _barItem(
-      title: 'Order',
-      icon: OMIcons.receipt,
-      activeIcon: Icons.receipt,
+    BottomNavigationBarItem(
+      title: Text('Order'),
+      icon: Icon(Icons.receipt),
     ),
-    _barItem(
-      title: 'History',
-      icon: OMIcons.history,
-      activeIcon: Icons.history,
+    BottomNavigationBarItem(
+      title: Text('History'),
+      icon: Icon(Icons.history),
     ),
   ];
 
@@ -100,11 +84,11 @@ class HomeView extends StatelessWidget {
                     ),
                     child: Row(
                       children: <Widget>[
-                        Icon(Icons.info),
+                        Icon(Icons.settings),
                         Spacer(
                           flex: 1,
                         ),
-                        Text('About'),
+                        Text('Settings'),
                         Spacer(
                           flex: 1,
                         ),
@@ -158,12 +142,6 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           // centerTitle: true,
           title: Text('Cafeteria'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(OMIcons.settings),
-              onPressed: () => Navigator.pushNamed(context, '/settings'),
-            ),
-          ],
         ),
         body: HomeView(),
         bottomNavigationBar: BottomBar(),
