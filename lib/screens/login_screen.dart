@@ -32,7 +32,6 @@ class LoginScreen extends StatelessWidget {
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                focusColor: Colors.blue,
                 labelText: 'Password',
               ),
             ),

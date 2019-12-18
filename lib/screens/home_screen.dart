@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart' show ChangeNotifierProvider, Provider;
 
+// final mock_text =
+//     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sollicitudin imperdiet tortor. Mauris tempor dolor purus, eget ultrices nisl vulputate vel. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce libero metus, facilisis vel mollis vel, mollis ut odio.';
+
 class BottomBar extends StatelessWidget {
   final _barItems = [
     BottomNavigationBarItem(
@@ -44,10 +47,17 @@ class HomeView extends StatelessWidget {
           children: <Widget>[
             Icon(
               Icons.restaurant_menu,
-              size: 150,
+              size: 120,
             ),
             SizedBox(
-              height: 150,
+              height: 25,
+            ),
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 25),
+            //   child: Text(mock_text),
+            // ),
+            SizedBox(
+              height: 25,
             ),
             Row(
               children: <Widget>[
@@ -110,9 +120,13 @@ class HomeView extends StatelessWidget {
           children: <Widget>[
             Icon(
               Icons.receipt,
-              size: 40,
+              size: 120,
             ),
-            Text('Make a new order...')
+            SizedBox(height: 25),
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 25),
+            //   child: Text(mock_text),
+            // ),
           ],
         ),
       );
@@ -124,9 +138,13 @@ class HomeView extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.history,
-            size: 40,
+            size: 120,
           ),
-          Text('History of orders...')
+          SizedBox(height: 25),
+          // Container(
+          //   margin: EdgeInsets.symmetric(horizontal: 25),
+          //   child: Text(mock_text),
+          // ),
         ],
       ),
     );
@@ -140,7 +158,7 @@ class HomeScreen extends StatelessWidget {
       value: ValueNotifier(0),
       child: Scaffold(
         appBar: AppBar(
-          // centerTitle: true,
+          centerTitle: true,
           title: Text('Cafeteria'),
         ),
         body: HomeView(),

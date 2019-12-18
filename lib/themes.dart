@@ -7,12 +7,12 @@ import './colors.dart';
 final baseLightTheme = ThemeData.light();
 final baseDarkTheme = ThemeData.dark();
 
-final lightTextTheme =
+final TextTheme lightTextTheme =
     GoogleFonts.josefinSansTextTheme(baseLightTheme.textTheme);
-final darkTextTheme = GoogleFonts.josefinSansTextTheme(baseDarkTheme.textTheme);
+final TextTheme darkTextTheme =
+    GoogleFonts.josefinSansTextTheme(baseDarkTheme.textTheme);
 
 final lightTheme = baseLightTheme.copyWith(
-  platform: TargetPlatform.iOS,
   brightness: Brightness.light,
   textTheme: lightTextTheme,
   primaryColor: lightPrimary,
@@ -36,8 +36,9 @@ final lightTheme = baseLightTheme.copyWith(
   primaryIconTheme: IconThemeData(
     color: lightSecondary,
   ),
-  textSelectionColor: lightPrimary.withOpacity(0.5),
-  textSelectionHandleColor: lightPrimary,
+  textSelectionColor: lightSecondary.withOpacity(0.3),
+  textSelectionHandleColor: lightSecondary,
+  canvasColor: lightSecondary,
   hintColor: lightSecondary,
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: TextStyle(color: lightSecondary),
@@ -66,7 +67,6 @@ final lightTheme = baseLightTheme.copyWith(
 );
 
 final darkTheme = baseDarkTheme.copyWith(
-  platform: TargetPlatform.iOS,
   brightness: Brightness.dark,
   textTheme: darkTextTheme,
   primaryColor: darkPrimary,
@@ -90,8 +90,9 @@ final darkTheme = baseDarkTheme.copyWith(
   primaryIconTheme: IconThemeData(
     color: darkSecondary,
   ),
-  textSelectionColor: darkPrimary.withOpacity(0.5),
-  textSelectionHandleColor: darkPrimary,
+  textSelectionColor: darkSecondary.withOpacity(0.4),
+  textSelectionHandleColor: darkSecondary,
+  canvasColor: darkSecondary,
   hintColor: darkSecondary,
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: TextStyle(color: darkSecondary),
