@@ -64,6 +64,26 @@ final lightTheme = baseLightTheme.copyWith(
     ),
     elevation: 0,
   ),
+  chipTheme: baseLightTheme.chipTheme.copyWith(
+    selectedColor: lightPrimary,
+    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    backgroundColor: lightPrimaryDark,
+    checkmarkColor: lightPrimary,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(50),
+      side: BorderSide(
+        color: lightSecondaryDark,
+      ),
+    ),
+    secondarySelectedColor: lightSecondaryLight,
+    labelStyle: lightTextTheme.body1.copyWith(
+      color: lightSecondaryDark,
+    ),
+    secondaryLabelStyle: lightTextTheme.body1.copyWith(
+      color: lightPrimary,
+    ),
+  ),
 );
 
 final darkTheme = baseDarkTheme.copyWith(
@@ -117,5 +137,26 @@ final darkTheme = baseDarkTheme.copyWith(
       ),
     ),
     elevation: 0,
+  ),
+  cardColor: darkPrimaryLight,
+  chipTheme: baseDarkTheme.chipTheme.copyWith(
+    selectedColor: darkPrimary,
+    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    backgroundColor: darkPrimaryDark,
+    checkmarkColor: darkPrimary,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(50),
+      side: BorderSide(
+        color: darkSecondaryDark,
+      ),
+    ),
+    secondarySelectedColor: darkSecondaryLight,
+    labelStyle: darkTextTheme.body1.copyWith(
+      color: darkSecondaryDark,
+    ),
+    secondaryLabelStyle: darkTextTheme.body1.copyWith(
+      color: darkPrimary,
+    ),
   ),
 );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/screens.dart';
-import './themes.dart';
+import './themes/themes.dart';
 
 class _App extends StatelessWidget {
   @override
@@ -17,7 +17,8 @@ class _App extends StatelessWidget {
       darkTheme: darkTheme,
       themeMode: _themeMode.value,
       routes: {
-        '/': (_) => HomeScreen(),
+        '/': (_) => InitialScreen(),
+        '/home': (_) => HomeScreen(),
         '/login': (_) => LoginScreen(),
         '/settings': (_) => SettingsScreen(),
       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets.dart' show TappableText;
+
+import '../widgets/tappable_text.dart';
 
 class LoginScreen extends StatelessWidget {
   final _emailController = TextEditingController();
@@ -42,9 +43,7 @@ class LoginScreen extends StatelessWidget {
               width: double.infinity,
               child: RaisedButton(
                 child: Text('Login'),
-                onPressed: () {
-                  print('Pressed!');
-                },
+                onPressed: () => Navigator.pushNamed(context, '/home'),
               ),
             ),
             Container(

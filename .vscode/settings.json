@@ -1,6 +1,10 @@
 {
     "dart.flutterGutterIcons": true,
     "dart.previewFlutterUiGuides": true,
+    "files.associations": {
+        "pubspec.lock": "yaml",
+        ".metadata": "yaml",
+    },
     "files.exclude": {
         "ios/**/*.mode1v3": true,
         "ios/**/*.mode2v3": true,
