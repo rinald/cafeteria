@@ -4,8 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 import './colors.dart';
 
-final baseLightTheme = ThemeData.light();
-final baseDarkTheme = ThemeData.dark();
+final baseLightTheme = ThemeData(
+  brightness: Brightness.light,
+  // platform: TargetPlatform.iOS,
+);
+
+final baseDarkTheme = ThemeData(
+  brightness: Brightness.dark,
+  // platform: TargetPlatform.iOS,
+);
 
 final TextTheme lightTextTheme =
     GoogleFonts.josefinSansTextTheme(baseLightTheme.textTheme);

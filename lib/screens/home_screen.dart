@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/product.dart';
-
 import './home_view.dart';
 import './order_view.dart';
 import './history_view.dart';
+
+import '../blocs/blocs.dart';
+import '../models/product.dart';
 
 class BottomBar extends StatelessWidget {
   final _barItems = [
@@ -38,44 +39,6 @@ class BottomBar extends StatelessWidget {
   }
 }
 
-class ProductList with ChangeNotifier {
-  final _list = <Product>[];
-  double price = 0;
-
-  List<Product> get products => _list;
-
-  void add(Product product) {
-    _list.add(product);
-    price += product.price;
-    notifyListeners();
-  }
-
-  void remove(Product product) {
-    _list.remove(product);
-    price -= product.price;
-    notifyListeners();
-  }
-
-  void clear() {
-    _list.clear();
-    price = 0;
-    notifyListeners();
-  }
-}
-
-class OrderList with ChangeNotifier {
-  final _list = <double>[];
-  double total = 0;
-
-  List<double> get orders => _list;
-
-  void create(double price) {
-    _list.add(price);
-    total += price;
-    notifyListeners();
-  }
-}
-
 class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -97,9 +60,9 @@ class HomeScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: ValueNotifier(Category.all)),
-        ChangeNotifierProvider.value(value: ProductList()),
+        ChangeNotifierProvider.value(value: ProductBloc()),
         ChangeNotifierProvider.value(value: ValueNotifier(0)),
-        ChangeNotifierProvider.value(value: OrderList()),
+        ChangeNotifierProvider.value(value: OrderBloc()),
       ],
       child: Scaffold(
         appBar: AppBar(

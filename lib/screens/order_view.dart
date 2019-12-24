@@ -1,12 +1,14 @@
-import 'package:cafeteria/screens/screens.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
+
+import '../blocs/blocs.dart';
 
 class OrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _productList = Provider.of<ProductList>(context);
-    final _orderList = Provider.of<OrderList>(context);
+    final _productBloc = Provider.of<ProductBloc>(context);
+    final _orderBloc = Provider.of<OrderBloc>(context);
 
     return Column(
       children: <Widget>[
@@ -14,7 +16,7 @@ class OrderView extends StatelessWidget {
           children: <Widget>[
             Spacer(),
             Text(
-              'Total: ${_productList.price} LEK',
+              'Total: ${_productBloc.total} LEK',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -23,11 +25,11 @@ class OrderView extends StatelessWidget {
             Spacer(),
             RaisedButton(
               child: Text('Check Out'),
-              onPressed: _productList.products.isEmpty
+              onPressed: _productBloc.products.isEmpty
                   ? null
                   : () {
-                      _orderList.create(_productList.price);
-                      _productList.clear();
+                      _orderBloc.create(_productBloc);
+                      _productBloc.clear();
                     },
             ),
             Spacer(),
@@ -36,21 +38,21 @@ class OrderView extends StatelessWidget {
         SizedBox(height: 4),
         Expanded(
           child: ListView.builder(
-            itemCount: _productList.products.length,
+            itemCount: _productBloc.products.length,
             itemBuilder: (_, index) => ListTile(
               leading: AspectRatio(
                 aspectRatio: 1.2,
                 child: Image.asset(
-                  'assets/products/${_productList.products[index].imagePath}',
+                  'assets/products/${_productBloc.products[index].imagePath}',
                   fit: BoxFit.fitHeight,
                 ),
               ),
-              title: Text(_productList.products[index].displayName),
-              subtitle: Text('${_productList.products[index].price} LEK'),
+              title: Text(_productBloc.products[index].displayName),
+              subtitle: Text('${_productBloc.products[index].price} LEK'),
               trailing: IconButton(
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
-                  _productList.remove(_productList.products[index]);
+                  _productBloc.removeAt(index);
                 },
               ),
             ),

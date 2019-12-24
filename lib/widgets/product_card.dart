@@ -1,7 +1,8 @@
-import 'package:cafeteria/screens/screens.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../blocs/product_bloc.dart';
 import '../models/product.dart';
 
 class ProductCard extends StatelessWidget {
@@ -10,13 +11,12 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _products = Provider.of<ProductList>(context);
+    final _productBloc = Provider.of<ProductBloc>(context);
 
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           AspectRatio(
             aspectRatio: 2,
@@ -50,11 +50,9 @@ class ProductCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                    // padding: EdgeInsets.all(0),
-                    // alignment: Alignment.centerRight,
                     icon: Icon(Icons.add_circle_outline),
                     onPressed: () {
-                      _products.add(product);
+                      _productBloc.add(product);
                     },
                   ),
                 )
