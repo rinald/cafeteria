@@ -1,3 +1,5 @@
+import 'package:cafeteria/screens/screens.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
@@ -8,6 +10,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _products = Provider.of<ProductList>(context);
+
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Column(
@@ -15,14 +19,14 @@ class ProductCard extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           AspectRatio(
-            aspectRatio: 1.5,
+            aspectRatio: 2,
             child: Image.asset(
-              'assets/products/${product.name}.jpg',
+              'assets/products/${product.imagePath}',
               fit: BoxFit.fitWidth,
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+            padding: EdgeInsets.fromLTRB(16.0, 12.0, 8.0, 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -35,7 +39,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 SizedBox(height: 8.0),
                 Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.centerLeft,
                   child: Text(
                     '${product.price} LEK',
                     style: TextStyle(
@@ -43,6 +47,17 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    // padding: EdgeInsets.all(0),
+                    // alignment: Alignment.centerRight,
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: () {
+                      _products.add(product);
+                    },
+                  ),
+                )
               ],
             ),
           ),

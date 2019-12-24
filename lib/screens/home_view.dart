@@ -77,7 +77,7 @@ class HomeView extends StatelessWidget {
           child: GridView.count(
             crossAxisCount: 2,
             padding: EdgeInsets.all(16),
-            childAspectRatio: 8 / 9,
+            childAspectRatio: 0.9,
             children: <Widget>[
               for (var product in productsOfCategory(_category.value))
                 ProductCard(

@@ -19,10 +19,6 @@ class InitialScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            // Container(
-            //   margin: EdgeInsets.symmetric(horizontal: 25),
-            //   child: Text(mock_text),
-            // ),
             SizedBox(
               height: 25,
             ),
