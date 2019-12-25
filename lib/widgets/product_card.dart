@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../blocs/product_bloc.dart';
 import '../models/product.dart';
+import '../models/cart_entry.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -12,6 +13,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _productBloc = Provider.of<ProductBloc>(context);
+    final _entry = CartEntry.of(product);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -21,7 +23,7 @@ class ProductCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 2,
             child: Image.asset(
-              'assets/products/${product.imagePath}',
+              'assets/products/${_entry.image}',
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -41,20 +43,25 @@ class ProductCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '${product.price} LEK',
+                    '${_entry.price} LEK',
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    icon: Icon(Icons.add_circle_outline),
-                    onPressed: () {
-                      _productBloc.add(product);
-                    },
-                  ),
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.shopping_cart),
+                    SizedBox(width: 5),
+                    Text('${_productBloc.products[_entry] ?? 0}'),
+                    Spacer(),
+                    IconButton(
+                      icon: Icon(Icons.add_circle_outline),
+                      onPressed: () {
+                        _productBloc.add(product);
+                      },
+                    ),
+                  ],
                 )
               ],
             ),

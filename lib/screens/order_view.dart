@@ -28,7 +28,8 @@ class OrderView extends StatelessWidget {
               onPressed: _productBloc.products.isEmpty
                   ? null
                   : () {
-                      _orderBloc.create(_productBloc);
+                      _orderBloc.create(
+                          Map.from(_productBloc.products), _productBloc.total);
                       _productBloc.clear();
                     },
             ),
@@ -39,23 +40,44 @@ class OrderView extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             itemCount: _productBloc.products.length,
-            itemBuilder: (_, index) => ListTile(
-              leading: AspectRatio(
-                aspectRatio: 1.2,
-                child: Image.asset(
-                  'assets/products/${_productBloc.products[index].imagePath}',
-                  fit: BoxFit.fitHeight,
+            itemBuilder: (_, index) {
+              final _product = _productBloc.products.keys.elementAt(index);
+
+              return ListTile(
+                leading: AspectRatio(
+                  aspectRatio: 1.2,
+                  child: Image.asset(
+                    'assets/products/${_product.image}',
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
-              ),
-              title: Text(_productBloc.products[index].displayName),
-              subtitle: Text('${_productBloc.products[index].price} LEK'),
-              trailing: IconButton(
-                icon: Icon(Icons.remove_circle_outline),
-                onPressed: () {
-                  _productBloc.removeAt(index);
-                },
-              ),
-            ),
+                title: Text(
+                    '${_product.name} x${_productBloc.products[_product]}'),
+                subtitle: Text('${_product.price} LEK'),
+                trailing: Container(
+                  width: 100,
+                  child: Row(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.remove_circle_outline),
+                        onPressed: () {
+                          _productBloc.remove(_product);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.highlight_off,
+                          color: Theme.of(context).errorColor,
+                        ),
+                        onPressed: () {
+                          _productBloc.removeAll(_product);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ],

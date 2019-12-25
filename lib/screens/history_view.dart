@@ -23,7 +23,7 @@ class HistoryView extends StatelessWidget {
           child: ListView.builder(
             itemCount: _orderBloc.orders.length,
             itemBuilder: (_, index) {
-              final _info = _orderBloc.orders[index].info;
+              final _products = _orderBloc.orders[index].products;
 
               return Column(
                 children: <Widget>[
@@ -36,10 +36,17 @@ class HistoryView extends StatelessWidget {
                     ),
                   ),
                   Divider(),
-                  for (var info in _info)
+                  for (var _product in _products.keys)
                     ListTile(
-                      title: Text('${info.name} x${info.quantity}'),
-                      subtitle: Text('${info.price} LEK'),
+                      leading: AspectRatio(
+                        aspectRatio: 1.2,
+                        child: Image.asset(
+                          'assets/products/${_product.image}',
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                      title: Text('${_product.name} x${_products[_product]}'),
+                      subtitle: Text('${_product.price} LEK'),
                     ),
                 ],
               );

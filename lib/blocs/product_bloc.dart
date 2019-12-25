@@ -1,23 +1,42 @@
 import 'package:flutter/foundation.dart';
 
 import '../models/product.dart';
+import '../models/cart_entry.dart';
 
 class ProductBloc with ChangeNotifier {
-  final _products = <Product>[];
+  final _products = Map<CartEntry, int>();
   double total = 0;
 
-  List<Product> get products => _products;
+  Map<CartEntry, int> get products => _products;
 
   void add(Product product) {
-    _products.add(product);
-    total += product.price;
+    final _entry = CartEntry.of(product);
+
+    if (_products.containsKey(_entry)) {
+      _products[_entry] += 1;
+    } else {
+      _products[_entry] = 1;
+    }
+
+    total += _entry.price;
     notifyListeners();
   }
 
-  void removeAt(int index) {
-    total -= _products[index].price;
+  void remove(CartEntry entry) {
+    if (_products[entry] == 1) {
+      _products.remove(entry);
+    } else {
+      _products[entry] -= 1;
+    }
 
-    _products.removeAt(index);
+    total -= entry.price;
+
+    notifyListeners();
+  }
+
+  void removeAll(CartEntry entry) {
+    total -= _products[entry] * entry.price;
+    _products.remove(entry);
 
     notifyListeners();
   }
@@ -25,6 +44,7 @@ class ProductBloc with ChangeNotifier {
   void clear() {
     _products.clear();
     total = 0;
+
     notifyListeners();
   }
 }

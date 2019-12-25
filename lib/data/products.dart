@@ -1,49 +1,49 @@
 import '../models/product.dart';
 
-final products = [
-  Product(
+const products = [
+  const Product(
     category: Category.food,
     imagePath: 'burger.jpg',
     displayName: 'Burger',
     price: 200,
   ),
-  Product(
+  const Product(
     category: Category.food,
     imagePath: 'pasta.jpg',
     displayName: 'Pasta',
     price: 250,
   ),
-  Product(
+  const Product(
     category: Category.food,
     imagePath: 'chicken_fillet.jpg',
     displayName: 'Chicken Fillet',
     price: 300,
   ),
-  Product(
+  const Product(
     category: Category.snack,
     imagePath: 'snickers.jpg',
     displayName: 'Snickers',
     price: 80,
   ),
-  Product(
+  const Product(
     category: Category.drink,
     imagePath: 'cocacola.jpg',
     displayName: 'CocaCola',
     price: 90,
   ),
-  Product(
+  const Product(
     category: Category.snack,
     imagePath: 'lion.jpg',
     displayName: 'Lion',
     price: 50,
   ),
-  Product(
+  const Product(
     category: Category.snack,
     imagePath: 'milka.jpg',
     displayName: 'Milka',
     price: 130,
   ),
-  Product(
+  const Product(
     category: Category.drink,
     imagePath: 'ice_tea.jpg',
     displayName: 'Lemon Ice Tea',

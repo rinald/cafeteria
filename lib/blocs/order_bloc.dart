@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../blocs/product_bloc.dart';
+import '../models/cart_entry.dart';
 import '../models/order.dart';
 
 class OrderBloc with ChangeNotifier {
@@ -9,9 +9,10 @@ class OrderBloc with ChangeNotifier {
 
   List<Order> get orders => _orders;
 
-  void create(ProductBloc productBloc) {
-    _orders.add(Order(productBloc.products));
-    total += productBloc.total;
+  void create(Map<CartEntry, int> products, double price) {
+    final _order = Order(products);
+    _orders.add(_order);
+    total += price;
     notifyListeners();
   }
 }

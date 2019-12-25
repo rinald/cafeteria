@@ -7,14 +7,12 @@ class Product {
   final String imagePath;
   final String displayName;
   final double price;
-  final double aspectRatio;
 
-  Product({
+  const Product({
     this.category = Category.all,
     @required this.imagePath,
     @required this.displayName,
     @required this.price,
-    this.aspectRatio,
   })  : assert(imagePath != null),
         assert(displayName != null),
         assert(price != null);

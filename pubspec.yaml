@@ -12,6 +12,7 @@ dependencies:
   
   provider: ^3.2.0
   google_fonts: ^0.2.0
+  equatable: ^1.0.1
 
 dev_dependencies:
   flutter_test:
