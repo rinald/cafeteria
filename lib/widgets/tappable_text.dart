@@ -12,6 +12,7 @@ class TappableText extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       textColor: Theme.of(context).accentColor,
+      padding: EdgeInsets.all(5),
       child: Text(
         data,
         style: TextStyle(

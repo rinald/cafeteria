@@ -2,11 +2,33 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+List<Widget> _themeOptions(
+  BuildContext context, {
+  Map<String, ThemeMode> items,
+}) {
+  final _themeMode = Provider.of<ValueNotifier<ThemeMode>>(context);
+  final _widgets = <Widget>[];
+
+  items.forEach(
+    (title, themeMode) {
+      _widgets.add(
+        RadioListTile(
+          activeColor: Theme.of(context).accentColor,
+          title: Text(title),
+          value: themeMode,
+          groupValue: _themeMode.value,
+          onChanged: (ThemeMode themeMode) => _themeMode.value = themeMode,
+        ),
+      );
+    },
+  );
+
+  return _widgets;
+}
+
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _themeMode = Provider.of<ValueNotifier<ThemeMode>>(context);
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -17,26 +39,13 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             title: Text('Theme'),
           ),
-          RadioListTile(
-            activeColor: Theme.of(context).accentColor,
-            title: Text('System default'),
-            value: ThemeMode.system,
-            groupValue: _themeMode.value,
-            onChanged: (ThemeMode mode) => _themeMode.value = mode,
-          ),
-          RadioListTile(
-            activeColor: Theme.of(context).accentColor,
-            title: Text('Light'),
-            value: ThemeMode.light,
-            groupValue: _themeMode.value,
-            onChanged: (ThemeMode mode) => _themeMode.value = mode,
-          ),
-          RadioListTile(
-            activeColor: Theme.of(context).accentColor,
-            title: Text('Dark'),
-            value: ThemeMode.dark,
-            groupValue: _themeMode.value,
-            onChanged: (ThemeMode mode) => _themeMode.value = mode,
+          ..._themeOptions(
+            context,
+            items: {
+              'System default': ThemeMode.system,
+              'Light': ThemeMode.light,
+              'Dark': ThemeMode.dark,
+            },
           ),
         ],
       ),

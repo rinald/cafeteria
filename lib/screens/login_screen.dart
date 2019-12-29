@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/spaced_column.dart';
 import '../widgets/tappable_text.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -17,17 +18,15 @@ class LoginScreen extends StatelessWidget {
         margin: EdgeInsets.symmetric(
           horizontal: 40,
         ),
-        child: Column(
+        child: SpacedInColumn(
           mainAxisAlignment: MainAxisAlignment.center,
+          spacer: SizedBox(height: 10),
           children: <Widget>[
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
               ),
-            ),
-            SizedBox(
-              height: 10,
             ),
             TextField(
               controller: _passwordController,
@@ -36,14 +35,12 @@ class LoginScreen extends StatelessWidget {
                 labelText: 'Password',
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
             Container(
               width: double.infinity,
               child: RaisedButton(
                 child: Text('Login'),
-                onPressed: () => Navigator.pushNamed(context, '/home'),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, '/main'),
               ),
             ),
             Container(
@@ -51,7 +48,26 @@ class LoginScreen extends StatelessWidget {
               child: TappableText(
                 'Forgot your password?',
                 onPressed: () {
-                  print('You forgot your password.');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) {
+                        return Scaffold(
+                          appBar: AppBar(
+                            centerTitle: true,
+                            title: Text('Reset password'),
+                          ),
+                          body: Center(
+                            child: RaisedButton(
+                              child: Text('Reset Password'),
+                              onPressed: () => Navigator.pushReplacementNamed(
+                                  context, '/login'),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
                 },
               ),
             ),
@@ -61,9 +77,8 @@ class LoginScreen extends StatelessWidget {
                 Text("Don't have an account?"),
                 TappableText(
                   'Sign up',
-                  onPressed: () {
-                    print('Sign up...');
-                  },
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/signup'),
                 ),
               ],
             ),

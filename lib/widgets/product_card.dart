@@ -8,7 +8,7 @@ import '../models/cart_entry.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  ProductCard({@required this.product}) : assert(product != null);
+  ProductCard(this.product);
 
   @override
   Widget build(BuildContext context) {

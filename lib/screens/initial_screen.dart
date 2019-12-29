@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/spaced_column.dart';
+import '../widgets/spaced_row.dart';
+
 class InitialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,73 +11,55 @@ class InitialScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('Cafeteria'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.restaurant_menu,
-              size: 120,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Row(
-              children: <Widget>[
-                Spacer(),
-                Expanded(
-                  flex: 3,
-                  child: RaisedButton(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 20,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.person),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Text('Login'),
-                        Spacer(
-                          flex: 1,
-                        ),
-                      ],
-                    ),
-                    onPressed: () => Navigator.pushNamed(context, '/login'),
+      body: SpacedInColumn(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacer: SizedBox(height: 50),
+        children: <Widget>[
+          Icon(
+            Icons.restaurant_menu,
+            size: 120,
+          ),
+          SpacedOutRow(
+            spacer: Spacer(),
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: RaisedButton(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 20,
                   ),
-                ),
-                Spacer(),
-                Expanded(
-                  flex: 3,
-                  child: RaisedButton(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 20,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.settings),
-                        Spacer(
-                          flex: 1,
-                        ),
-                        Text('Settings'),
-                        Spacer(
-                          flex: 1,
-                        ),
-                      ],
-                    ),
-                    onPressed: () => Navigator.pushNamed(context, '/settings'),
+                  child: SpacedInRow(
+                    spacer: Spacer(),
+                    children: <Widget>[
+                      Icon(Icons.person),
+                      Text('Login'),
+                    ],
                   ),
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/login'),
                 ),
-                Spacer(),
-              ],
-            ),
-          ],
-        ),
+              ),
+              Expanded(
+                flex: 3,
+                child: RaisedButton(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 20,
+                  ),
+                  child: SpacedInRow(
+                    spacer: Spacer(),
+                    children: <Widget>[
+                      Icon(Icons.settings),
+                      Text('Settings'),
+                    ],
+                  ),
+                  onPressed: () => Navigator.pushNamed(context, '/settings'),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

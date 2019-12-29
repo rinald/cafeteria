@@ -18,9 +18,10 @@ class _App extends StatelessWidget {
       themeMode: _themeMode.value,
       routes: {
         '/': (_) => InitialScreen(),
-        '/home': (_) => HomeScreen(),
+        '/main': (_) => MainScreen(),
         '/login': (_) => LoginScreen(),
         '/settings': (_) => SettingsScreen(),
+        '/signup': (_) => SignupScreen(),
       },
     );
   }

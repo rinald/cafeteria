@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../blocs/order_bloc.dart';
+import '../../blocs/order_bloc.dart';
+import '../../widgets/spaced_row.dart';
+import '../../widgets/spaced_column.dart';
 
 class HistoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _orderBloc = Provider.of<OrderBloc>(context);
 
-    return Column(
+    return SpacedInColumn(
+      spacer: SizedBox(height: 4),
       children: <Widget>[
         Text(
           'Total: ${_orderBloc.total} LEK',
@@ -18,7 +21,6 @@ class HistoryView extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 4),
         Expanded(
           child: ListView.builder(
             itemCount: _orderBloc.orders.length,
@@ -28,12 +30,21 @@ class HistoryView extends StatelessWidget {
               return Column(
                 children: <Widget>[
                   Divider(),
-                  Text(
-                    'Order #${index + 1}',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  SpacedOutRow(
+                    spacer: Spacer(),
+                    children: [
+                      Text(
+                        'Order #${index + 1}',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.redo),
+                        onPressed: () {},
+                      )
+                    ],
                   ),
                   Divider(),
                   for (var _product in _products.keys)
