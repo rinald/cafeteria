@@ -3,64 +3,82 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../blocs/blocs.dart';
-import '../../widgets/cart_entry_tile.dart';
+import '../../icons/line_icons.dart';
+import '../../widgets/product_tile.dart';
 import '../../widgets/spaced_column.dart';
 import '../../widgets/spaced_row.dart';
 
 class OrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _productBloc = Provider.of<ProductBloc>(context);
     final _orderBloc = Provider.of<OrderBloc>(context);
 
-    return SpacedInColumn(
-      spacer: SizedBox(height: 4),
-      children: <Widget>[
-        SpacedOutRow(
-          spacer: Spacer(),
-          children: <Widget>[
-            Text(
-              'Total: ${_productBloc.total} LEK',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Your Order'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              LineIcons.shopping_cart,
             ),
-            RaisedButton(
-              child: Text('Check Out'),
-              onPressed: _productBloc.products.isEmpty
-                  ? null
-                  : () {
-                      _orderBloc.create(
-                          Map.from(_productBloc.products), _productBloc.total);
-                      _productBloc.clear();
-                      Scaffold.of(context).showSnackBar(
-                        SnackBar(
-                          content: SpacedInRow(
-                            spacer: SizedBox(width: 10),
-                            children: <Widget>[
-                              Icon(Icons.shopping_cart),
-                              Text('Order successful.'),
-                            ],
-                          ),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
-            ),
-          ],
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _productBloc.products.length,
-            itemBuilder: (_, index) {
-              final _product = _productBloc.products.keys.elementAt(index);
-
-              return CartEntryTile(_product);
-            },
+            onPressed: _orderBloc.order.isEmpty
+                ? null
+                : () {
+                    _orderBloc.checkOut();
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Successful checkout.'),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  },
           ),
-        ),
-      ],
+        ],
+      ),
+      body: SpacedInColumn(
+        spacer: SizedBox(height: 4),
+        children: <Widget>[
+          SpacedOutRow(
+            spacer: Spacer(),
+            children: <Widget>[
+              Text(
+                '${_orderBloc.orderTotal} LEK',
+                style: TextStyle(
+                  fontSize: 18,
+                  // fontWeight: FontWeight.bold,
+                ),
+              ),
+              RaisedButton(
+                child: Text('Clear'),
+                onPressed: _orderBloc.order.isEmpty
+                    ? null
+                    : () {
+                        _orderBloc.clearOrder();
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Cleared order.'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: _orderBloc.restoreOrder,
+                            ),
+                          ),
+                        );
+                      },
+              ),
+            ],
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _orderBloc.order.length,
+              itemBuilder: (_, index) {
+                final _product = _orderBloc.order.keys.elementAt(index);
+
+                return ProductTile(_product);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

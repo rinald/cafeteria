@@ -1,8 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-enum Category { all, food, snack, drink }
+enum Category { all, dish, snack, drink }
 
-class Product {
+List<Category> allCategories = [
+  Category.all,
+  Category.dish,
+  Category.snack,
+  Category.drink,
+];
+
+class Product extends Equatable {
   final Category category;
   final String imagePath;
   final String displayName;
@@ -16,4 +24,7 @@ class Product {
   })  : assert(imagePath != null),
         assert(displayName != null),
         assert(price != null);
+
+  @override
+  List<Object> get props => [category, imagePath, displayName, price];
 }

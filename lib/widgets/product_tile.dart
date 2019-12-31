@@ -2,45 +2,46 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../blocs/product_bloc.dart';
-import '../models/cart_entry.dart';
+import '../blocs/order_bloc.dart';
+import '../icons/line_icons.dart';
+import '../models/product.dart';
 
-class CartEntryTile extends StatelessWidget {
-  final CartEntry entry;
+class ProductTile extends StatelessWidget {
+  final Product product;
 
-  CartEntryTile(this.entry);
+  ProductTile(this.product);
 
   @override
   Widget build(BuildContext context) {
-    final _productBloc = Provider.of<ProductBloc>(context);
+    final _orderBloc = Provider.of<OrderBloc>(context);
 
     return ListTile(
       leading: AspectRatio(
         aspectRatio: 1.2,
         child: Image.asset(
-          'assets/products/${entry.image}',
+          'assets/products/${product.imagePath}',
           fit: BoxFit.fitHeight,
         ),
       ),
-      title: Text('${entry.name} x${_productBloc.products[entry]}'),
-      subtitle: Text('${entry.price} LEK'),
+      title: Text('${product.displayName} x${_orderBloc.order[product]}'),
+      subtitle: Text('${product.price} LEK'),
       trailing: Container(
         width: 100,
         child: Row(
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.remove_circle_outline),
+              icon: Icon(LineIcons.minus_circle),
               onPressed: () {
-                _productBloc.remove(entry);
+                _orderBloc.remove(product);
               },
             ),
             IconButton(
               icon: Icon(
-                Icons.highlight_off,
+                LineIcons.times_circle,
                 color: Theme.of(context).errorColor,
               ),
               onPressed: () {
-                _productBloc.removeAll(entry);
+                _orderBloc.removeAllOf(product);
               },
             ),
           ],

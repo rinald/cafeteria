@@ -1,7 +1,7 @@
-import './cart_entry.dart';
+import './product.dart';
 
 class Order {
-  final Map<CartEntry, int> products;
+  final Map<Product, int> products;
 
   Order(this.products);
 }

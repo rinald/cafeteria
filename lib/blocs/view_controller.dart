@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../screens/views/views.dart';
-
 class ViewController with ChangeNotifier {
-  final _views = <Widget>[
-    HomeView(),
-    OrderView(),
-    HistoryView(),
-  ];
+  final List<Widget> views;
+  ViewController({@required this.views}) : assert(views != null);
 
   int _firstIndex = 0;
   int _secondIndex = 0;
@@ -15,8 +10,8 @@ class ViewController with ChangeNotifier {
 
   int get index => _firstIndex;
   bool get showFirst => _showFirst;
-  Widget get firstView => _views[_firstIndex];
-  Widget get secondView => _views[_secondIndex];
+  Widget get firstView => views[_firstIndex];
+  Widget get secondView => views[_secondIndex];
 
   set index(int index) {
     if (_firstIndex != index) {

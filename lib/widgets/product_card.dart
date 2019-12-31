@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../blocs/product_bloc.dart';
+import '../blocs/order_bloc.dart';
+import '../icons/line_icons.dart';
 import '../models/product.dart';
-import '../models/cart_entry.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -12,8 +12,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _productBloc = Provider.of<ProductBloc>(context);
-    final _entry = CartEntry.of(product);
+    final _orderBloc = Provider.of<OrderBloc>(context);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -23,7 +22,7 @@ class ProductCard extends StatelessWidget {
           AspectRatio(
             aspectRatio: 2,
             child: Image.asset(
-              'assets/products/${_entry.image}',
+              'assets/products/${product.imagePath}',
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -36,14 +35,14 @@ class ProductCard extends StatelessWidget {
                   product.displayName,
                   style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    // fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 8.0),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '${_entry.price} LEK',
+                    '${product.price} LEK',
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
@@ -51,14 +50,14 @@ class ProductCard extends StatelessWidget {
                 ),
                 Row(
                   children: <Widget>[
-                    Icon(Icons.shopping_cart),
+                    Icon(LineIcons.shopping_cart),
                     SizedBox(width: 5),
-                    Text('${_productBloc.products[_entry] ?? 0}'),
+                    Text('${_orderBloc.order[product] ?? 0}'),
                     Spacer(),
                     IconButton(
-                      icon: Icon(Icons.add_circle_outline),
+                      icon: Icon(LineIcons.plus_circle),
                       onPressed: () {
-                        _productBloc.add(product);
+                        _orderBloc.add(product);
                       },
                     ),
                   ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../icons/line_icons.dart';
+
 List<Widget> _themeOptions(
   BuildContext context, {
   Map<String, ThemeMode> items,
@@ -15,6 +17,7 @@ List<Widget> _themeOptions(
         RadioListTile(
           activeColor: Theme.of(context).accentColor,
           title: Text(title),
+          secondary: title == 'Dark' ? Icon(LineIcons.moon) : null,
           value: themeMode,
           groupValue: _themeMode.value,
           onChanged: (ThemeMode themeMode) => _themeMode.value = themeMode,
@@ -46,6 +49,24 @@ class SettingsScreen extends StatelessWidget {
               'Light': ThemeMode.light,
               'Dark': ThemeMode.dark,
             },
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 40,
+              vertical: 20,
+            ),
+            child: RaisedButton(
+              child: Row(
+                children: <Widget>[
+                  Icon(LineIcons.alternate_sign_out),
+                  Spacer(),
+                  Text('Log Out'),
+                  Spacer(),
+                ],
+              ),
+              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false),
+            ),
           ),
         ],
       ),

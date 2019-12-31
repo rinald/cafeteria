@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../icons/line_icons.dart';
 import '../widgets/spaced_column.dart';
 import '../widgets/tappable_text.dart';
 
@@ -38,7 +39,14 @@ class LoginScreen extends StatelessWidget {
             Container(
               width: double.infinity,
               child: RaisedButton(
-                child: Text('Login'),
+                child: Row(
+                  children: <Widget>[
+                    Icon(LineIcons.alternate_sign_in),
+                    Spacer(),
+                    Text('Log In'),
+                    Spacer(),
+                  ],
+                ),
                 onPressed: () =>
                     Navigator.pushReplacementNamed(context, '/main'),
               ),

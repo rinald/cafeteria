@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../icons/line_icons.dart';
 import '../blocs/blocs.dart';
-import '../models/product.dart';
+import '../screens/views/views.dart';
+import '../widgets/crossfade_views.dart';
 
 class _BottomNavigationBar extends StatelessWidget {
   @override
@@ -18,60 +20,17 @@ class _BottomNavigationBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           title: Text('Home'),
-          icon: Icon(Icons.home),
+          icon: Icon(LineIcons.home),
         ),
         BottomNavigationBarItem(
           title: Text('Order'),
-          icon: Icon(Icons.receipt),
+          icon: Icon(LineIcons.receipt),
         ),
         BottomNavigationBarItem(
           title: Text('History'),
-          icon: Icon(Icons.history),
+          icon: Icon(LineIcons.history),
         ),
       ],
-    );
-  }
-}
-
-class _Body extends StatelessWidget {
-  final AnimatedCrossFadeBuilder _layoutBuilder = (
-    topChild,
-    topChildKey,
-    bottomChild,
-    bottomChildKey,
-  ) {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          key: bottomChildKey,
-          child: bottomChild,
-        ),
-        Positioned(
-          key: topChildKey,
-          child: topChild,
-        ),
-      ],
-    );
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    final _viewController = Provider.of<ViewController>(context);
-
-    return AnimatedCrossFade(
-      crossFadeState: _viewController.showFirst
-          ? CrossFadeState.showFirst
-          : CrossFadeState.showSecond,
-      firstChild: _viewController.showFirst
-          ? _viewController.firstView
-          : _viewController.secondView,
-      secondChild: _viewController.showFirst
-          ? _viewController.secondView
-          : _viewController.firstView,
-      duration: Duration(milliseconds: 200),
-      firstCurve: Curves.easeInCubic,
-      secondCurve: Curves.easeInCubic,
-      layoutBuilder: _layoutBuilder,
     );
   }
 }
@@ -82,24 +41,29 @@ class MainScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ValueNotifier(Category.all),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ProductBloc(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ViewController(),
+          create: (_) => ViewController(
+            views: <Widget>[
+              ChangeNotifierProvider(
+                create: (_) => ViewController(views: productViews),
+                child: HomeView(),
+              ),
+              OrderView(),
+              HistoryView(),
+            ],
+          ),
         ),
         ChangeNotifierProvider(
           create: (_) => OrderBloc(),
         ),
       ],
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Cafeteria'),
+        body: SafeArea(
+          top: false,
+          child: CrossFadeViews(
+            firstCurve: Curves.easeOutQuad,
+            secondCurve: Curves.easeInQuad,
+          ),
         ),
-        body: _Body(),
         bottomNavigationBar: _BottomNavigationBar(),
       ),
     );

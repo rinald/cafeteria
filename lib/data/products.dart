@@ -2,19 +2,19 @@ import '../models/product.dart';
 
 const products = [
   const Product(
-    category: Category.food,
+    category: Category.dish,
     imagePath: 'burger.jpg',
     displayName: 'Burger',
     price: 200,
   ),
   const Product(
-    category: Category.food,
+    category: Category.dish,
     imagePath: 'pasta.jpg',
     displayName: 'Pasta',
     price: 250,
   ),
   const Product(
-    category: Category.food,
+    category: Category.dish,
     imagePath: 'chicken_fillet.jpg',
     displayName: 'Chicken Fillet',
     price: 300,

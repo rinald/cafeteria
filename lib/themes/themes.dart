@@ -37,6 +37,7 @@ final lightTheme = baseLightTheme.copyWith(
     ),
     textTheme: ButtonTextTheme.accent,
     buttonColor: lightSecondary,
+    disabledColor: lightPrimaryDark,
   ),
   cursorColor: lightSecondary,
   scaffoldBackgroundColor: lightPrimary,
@@ -65,7 +66,7 @@ final lightTheme = baseLightTheme.copyWith(
   appBarTheme: baseLightTheme.appBarTheme.copyWith(
     textTheme: TextTheme(
       title: lightTextTheme.title.copyWith(
-        fontWeight: FontWeight.bold,
+        // fontWeight: FontWeight.bold,
         fontSize: 22,
       ),
     ),
@@ -75,7 +76,7 @@ final lightTheme = baseLightTheme.copyWith(
     selectedColor: lightPrimary,
     padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
     labelPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-    backgroundColor: lightPrimaryDark,
+    backgroundColor: lightPrimary,
     checkmarkColor: lightPrimary,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(50),
@@ -90,6 +91,16 @@ final lightTheme = baseLightTheme.copyWith(
     secondaryLabelStyle: lightTextTheme.body1.copyWith(
       color: lightPrimary,
     ),
+  ),
+  snackBarTheme: SnackBarThemeData(
+    backgroundColor: lightSecondaryDark,
+    actionTextColor: lightPrimary,
+    contentTextStyle: TextStyle(
+      fontFamily: 'JosefinSans',
+      // fontWeight: FontWeight.bold,
+      color: lightPrimary,
+    ),
+    behavior: SnackBarBehavior.floating,
   ),
 );
 
@@ -111,6 +122,7 @@ final darkTheme = baseDarkTheme.copyWith(
     ),
     textTheme: ButtonTextTheme.accent,
     buttonColor: darkSecondary,
+    disabledColor: darkPrimaryLight,
   ),
   cursorColor: darkSecondary,
   scaffoldBackgroundColor: darkPrimary,
@@ -139,7 +151,7 @@ final darkTheme = baseDarkTheme.copyWith(
   appBarTheme: baseDarkTheme.appBarTheme.copyWith(
     textTheme: TextTheme(
       title: darkTextTheme.title.copyWith(
-        fontWeight: FontWeight.bold,
+        // fontWeight: FontWeight.bold,
         fontSize: 22,
       ),
     ),
@@ -165,5 +177,15 @@ final darkTheme = baseDarkTheme.copyWith(
     secondaryLabelStyle: darkTextTheme.body1.copyWith(
       color: darkPrimary,
     ),
+  ),
+  snackBarTheme: SnackBarThemeData(
+    contentTextStyle: TextStyle(
+      fontFamily: 'JosefinSans',
+      // fontWeight: FontWeight.bold,
+      color: darkPrimary,
+    ),
+    backgroundColor: darkSecondary,
+    actionTextColor: darkPrimary,
+    behavior: SnackBarBehavior.floating,
   ),
 );

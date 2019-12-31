@@ -2,26 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../models/product.dart' show Category;
+import '../blocs/view_controller.dart';
+
+import '../models/product.dart';
 
 extension on Category {
-  String asString() {
-    switch (this) {
-      case Category.all:
-        return 'All';
-        break;
-      case Category.food:
-        return 'Food';
-        break;
-      case Category.snack:
-        return 'Snack';
-        break;
-      case Category.drink:
-        return 'Drink';
-        break;
-    }
-
-    return 'Drink';
+  String get string {
+    var string = this.toString().split('.').last;
+    return string[0].toUpperCase() + string.substring(1);
   }
 }
 
@@ -33,18 +21,19 @@ class ProductChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _category = Provider.of<ValueNotifier<Category>>(context);
+    final _viewController = Provider.of<ViewController>(context);
 
     return ChoiceChip(
       avatar: Icon(
         avatar,
-        color: _category.value == category
+        color: allCategories[_viewController.index] == category
             ? Theme.of(context).primaryColor
             : Theme.of(context).accentColor,
       ),
-      label: Text(category.asString()),
-      selected: _category.value == category,
-      onSelected: (_) => _category.value = category,
+      label: Text(category.string),
+      selected: _viewController.index == allCategories.indexOf(category),
+      onSelected: (_) =>
+          _viewController.index = allCategories.indexOf(category),
     );
   }
 }
