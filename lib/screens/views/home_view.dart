@@ -27,6 +27,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cafeteria'),
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: Icon(LineIcons.cog),
@@ -37,6 +38,7 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: <Widget>[
           SpacedOutRow(
+            mainAxisAlignment: MainAxisAlignment.center,
             spacer: SizedBox(width: 10),
             children: _productChips(
               items: {
@@ -49,8 +51,6 @@ class HomeView extends StatelessWidget {
           ),
           Expanded(
             child: CrossFadeViews(
-              // duration: Duration(milliseconds: 300),
-              // reverseDuration: Duration(milliseconds: 300),
               firstCurve: Curves.easeOutQuad,
               secondCurve: Curves.easeInQuad,
             ),

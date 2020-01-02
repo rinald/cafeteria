@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import './blocs/user_bloc.dart';
 import './screens/screens.dart';
 import './themes/themes.dart';
 
@@ -30,8 +31,15 @@ class _App extends StatelessWidget {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: ValueNotifier(ThemeMode.system),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ValueNotifier(ThemeMode.system),
+        ),
+        Provider(
+          create: (_) => UserBloc(),
+        )
+      ],
       child: _App(),
     );
   }

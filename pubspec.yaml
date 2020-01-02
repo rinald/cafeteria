@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
   provider: ^4.0.1
   google_fonts: ^0.2.0
   equatable: ^1.0.1
@@ -31,4 +30,4 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: "launcher_icon"
-  image_path: "assets/logo/cafeteria_logo_3.png"
+  image_path: "assets/logo/cafeteria_logo.png"

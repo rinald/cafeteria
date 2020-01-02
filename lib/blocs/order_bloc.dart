@@ -4,15 +4,11 @@ import '../models/product.dart';
 
 class OrderBloc with ChangeNotifier {
   var _orders = <Map<Product, int>>[];
-  var _recentlyDeletedOrders = <Map<Product, int>>[];
 
   Map<Product, int> _order = {};
-  Map<Product, int> _recentlyDeletedOrder;
 
   double _orderTotal = 0;
   double _allOrdersTotal = 0;
-  double _recentlyDeletedOrderTotal = 0;
-  double _recentlyDeletedOrdersTotal = 0;
 
   double get orderTotal => _orderTotal;
   double get allOrdersTotal => _allOrdersTotal;
@@ -51,8 +47,6 @@ class OrderBloc with ChangeNotifier {
   }
 
   void clearOrder() {
-    _recentlyDeletedOrder = _order;
-    _recentlyDeletedOrderTotal = _orderTotal;
     _order = {};
     _orderTotal = 0;
 
@@ -60,24 +54,8 @@ class OrderBloc with ChangeNotifier {
   }
 
   void clearHistory() {
-    _recentlyDeletedOrders = _orders;
-    _recentlyDeletedOrdersTotal = _allOrdersTotal;
     _orders = [];
     _allOrdersTotal = 0;
-
-    notifyListeners();
-  }
-
-  void restoreOrder() {
-    _order = _recentlyDeletedOrder;
-    _orderTotal = _recentlyDeletedOrderTotal;
-
-    notifyListeners();
-  }
-
-  void restoreHistory() {
-    _orders = _recentlyDeletedOrders;
-    _allOrdersTotal = _recentlyDeletedOrdersTotal;
 
     notifyListeners();
   }

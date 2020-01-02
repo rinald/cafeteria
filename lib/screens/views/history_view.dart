@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../blocs/order_bloc.dart';
 import '../../widgets/spaced_row.dart';
 import '../../widgets/spaced_column.dart';
+import '../../widgets/tappable_text.dart';
 
 class HistoryView extends StatelessWidget {
   @override
@@ -14,6 +15,7 @@ class HistoryView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('All Orders'),
+        centerTitle: true,
       ),
       body: SpacedInColumn(
         spacer: SizedBox(height: 4),
@@ -33,19 +35,36 @@ class HistoryView extends StatelessWidget {
                 onPressed: _orderBloc.orders.isEmpty
                     ? null
                     : () {
-                        _orderBloc.clearHistory();
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Cleared history.'),
-                            action: SnackBarAction(
-                              label: 'Undo',
-                              onPressed: _orderBloc.restoreHistory,
-                            ),
-                            duration: Duration(seconds: 3),
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => AlertDialog(
+                            title: Text('Clear?'),
+                            content: Text(
+                                'Do you really want to clear the history?'),
+                            actions: <Widget>[
+                              TappableText(
+                                'Yes',
+                                onPressed: () {
+                                  _orderBloc.clearHistory();
+                                  Scaffold.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Cleared history.'),
+                                      duration: Duration(seconds: 3),
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              TappableText(
+                                'No',
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
                           ),
                         );
                       },
-              )
+              ),
             ],
           ),
           Expanded(

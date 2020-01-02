@@ -7,6 +7,7 @@ import '../../icons/line_icons.dart';
 import '../../widgets/product_tile.dart';
 import '../../widgets/spaced_column.dart';
 import '../../widgets/spaced_row.dart';
+import '../../widgets/tappable_text.dart';
 
 class OrderView extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class OrderView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Order'),
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -53,14 +55,32 @@ class OrderView extends StatelessWidget {
                 onPressed: _orderBloc.order.isEmpty
                     ? null
                     : () {
-                        _orderBloc.clearOrder();
-                        Scaffold.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Cleared order.'),
-                            action: SnackBarAction(
-                              label: 'Undo',
-                              onPressed: _orderBloc.restoreOrder,
-                            ),
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (_) => AlertDialog(
+                            title: Text('Clear?'),
+                            content:
+                                Text('Do you really want to clear the order?'),
+                            actions: <Widget>[
+                              TappableText(
+                                'Yes',
+                                onPressed: () {
+                                  _orderBloc.clearOrder();
+                                  Scaffold.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Cleared order.'),
+                                      duration: Duration(seconds: 3),
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              TappableText(
+                                'No',
+                                onPressed: () => Navigator.pop(context),
+                              ),
+                            ],
                           ),
                         );
                       },
