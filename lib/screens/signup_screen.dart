@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../blocs/user_bloc.dart';
-import '../widgets/spaced_column.dart';
+import '../widgets/spaced_widgets.dart';
+// import '../widgets/spaced_column.dart';
 
 class _Body extends StatelessWidget {
   final _emailController = TextEditingController();
@@ -18,52 +19,54 @@ class _Body extends StatelessWidget {
       margin: EdgeInsets.symmetric(
         horizontal: 40,
       ),
-      child: SpacedInColumn(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacer: SizedBox(height: 10),
-        children: <Widget>[
-          TextField(
-            controller: _emailController,
-            decoration: InputDecoration(
-              labelText: 'Email',
+        children: spacedIn(
+          spacer: SizedBox(height: 10),
+          children: <Widget>[
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+              ),
             ),
-          ),
-          TextField(
-            controller: _passwordController,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'Password',
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'Password',
+              ),
             ),
-          ),
-          TextField(
-            obscureText: true,
-            controller: _passwordRetypeController,
-            decoration: InputDecoration(
-              labelText: 'Retype Password',
+            TextField(
+              obscureText: true,
+              controller: _passwordRetypeController,
+              decoration: InputDecoration(
+                labelText: 'Retype Password',
+              ),
             ),
-          ),
-          Container(
-            width: double.infinity,
-            child: RaisedButton(
-              child: Text('Sign Up'),
-              onPressed: () {
-                if (_passwordRetypeController.text ==
-                    _passwordController.text) {
-                  _userBloc.signUp(
-                      _emailController.text, _passwordController.text);
-                  Navigator.pushReplacementNamed(context, '/main');
-                } else {
-                  Scaffold.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Signup failed. Passwords don\'t match.'),
-                      duration: Duration(seconds: 3),
-                    ),
-                  );
-                }
-              },
+            Container(
+              width: double.infinity,
+              child: RaisedButton(
+                child: Text('Sign Up'),
+                onPressed: () {
+                  if (_passwordRetypeController.text ==
+                      _passwordController.text) {
+                    _userBloc.signUp(
+                        _emailController.text, _passwordController.text);
+                    Navigator.pushReplacementNamed(context, '/main');
+                  } else {
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Signup failed. Passwords don\'t match.'),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  }
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

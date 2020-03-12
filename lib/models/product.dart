@@ -3,12 +3,7 @@ import 'package:meta/meta.dart';
 
 enum Category { all, dish, snack, drink }
 
-List<Category> allCategories = [
-  Category.all,
-  Category.dish,
-  Category.snack,
-  Category.drink,
-];
+List<Category> allCategories = Category.values;
 
 class Product extends Equatable {
   final Category category;

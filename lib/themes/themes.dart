@@ -6,12 +6,12 @@ import './colors.dart';
 
 final baseLightTheme = ThemeData(
   brightness: Brightness.light,
-  // platform: TargetPlatform.iOS,
+  platform: TargetPlatform.iOS,
 );
 
 final baseDarkTheme = ThemeData(
   brightness: Brightness.dark,
-  // platform: TargetPlatform.iOS,
+  platform: TargetPlatform.iOS,
 );
 
 final TextTheme lightTextTheme =
@@ -66,7 +66,7 @@ final lightTheme = baseLightTheme.copyWith(
   appBarTheme: baseLightTheme.appBarTheme.copyWith(
     textTheme: TextTheme(
       title: lightTextTheme.title.copyWith(
-        // fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.bold,
         fontSize: 22,
       ),
     ),
@@ -93,6 +93,7 @@ final lightTheme = baseLightTheme.copyWith(
     ),
   ),
   snackBarTheme: SnackBarThemeData(
+    // elevation: 4.0,
     backgroundColor: lightSecondaryDark,
     actionTextColor: lightPrimary,
     contentTextStyle: TextStyle(
@@ -100,7 +101,7 @@ final lightTheme = baseLightTheme.copyWith(
       // fontWeight: FontWeight.bold,
       color: lightPrimary,
     ),
-    behavior: SnackBarBehavior.floating,
+    behavior: SnackBarBehavior.fixed,
   ),
 );
 
@@ -151,7 +152,7 @@ final darkTheme = baseDarkTheme.copyWith(
   appBarTheme: baseDarkTheme.appBarTheme.copyWith(
     textTheme: TextTheme(
       title: darkTextTheme.title.copyWith(
-        // fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.bold,
         fontSize: 22,
       ),
     ),
@@ -186,6 +187,6 @@ final darkTheme = baseDarkTheme.copyWith(
     ),
     backgroundColor: darkSecondary,
     actionTextColor: darkPrimary,
-    behavior: SnackBarBehavior.floating,
+    behavior: SnackBarBehavior.fixed,
   ),
 );

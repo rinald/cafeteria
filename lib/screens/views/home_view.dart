@@ -37,16 +37,18 @@ class HomeView extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          SpacedOutRow(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacer: SizedBox(width: 10),
-            children: _productChips(
-              items: {
-                Category.all: LineIcons.compass,
-                Category.dish: LineIcons.utensils,
-                Category.snack: LineIcons.hamburger,
-                Category.drink: LineIcons.coffee,
-              },
+            children: spacedOut(
+              spacer: SizedBox(width: 10),
+              children: _productChips(
+                items: {
+                  Category.all: LineIcons.compass,
+                  Category.dish: LineIcons.utensils,
+                  Category.snack: LineIcons.hamburger,
+                  Category.drink: LineIcons.coffee,
+                },
+              ),
             ),
           ),
           Expanded(

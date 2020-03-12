@@ -7,11 +7,14 @@ class OrderBloc with ChangeNotifier {
 
   Map<Product, int> _order = {};
 
+  double _funds = 1000;
   double _orderTotal = 0;
   double _allOrdersTotal = 0;
 
   double get orderTotal => _orderTotal;
   double get allOrdersTotal => _allOrdersTotal;
+  double get funds => _funds;
+
   List<Map<Product, int>> get orders => _orders;
   Map<Product, int> get order => _order;
 
@@ -60,12 +63,19 @@ class OrderBloc with ChangeNotifier {
     notifyListeners();
   }
 
-  void checkOut() {
-    _allOrdersTotal += orderTotal;
-    _orders.add(_order);
-    _order = {};
-    _orderTotal = 0;
+  bool checkOut() {
+    if (orderTotal <= _funds) {
+      _funds -= orderTotal;
+      _allOrdersTotal += orderTotal;
+      _orders.add(_order);
+      _order = {};
+      _orderTotal = 0;
 
-    notifyListeners();
+      notifyListeners();
+
+      return true;
+    } else {
+      return false;
+    }
   }
 }
