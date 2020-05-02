@@ -46,7 +46,12 @@ class _Body extends StatelessWidget {
                     ...spacedOut(
                       spacer: Spacer(),
                       children: <Widget>[
-                        Text('Log In'),
+                        Text(
+                          'Sign in',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     )
                   ],
@@ -60,7 +65,8 @@ class _Body extends StatelessWidget {
                   } else {
                     Scaffold.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Login failed. Wrong email or password.'),
+                        content:
+                            Text('Signin failed. Wrong email or password.'),
                         duration: Duration(seconds: 3),
                       ),
                     );
@@ -72,30 +78,7 @@ class _Body extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: TappableText(
                 'Forgot your password?',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) {
-                        return Scaffold(
-                          appBar: AppBar(
-                            centerTitle: true,
-                            title: Text('Reset password'),
-                          ),
-                          body: Center(
-                            child: RaisedButton(
-                              child: Text('Reset Password'),
-                              onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/login');
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
+                onPressed: () {},
               ),
             ),
             Row(
@@ -122,7 +105,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Login'),
+        title: Text('Sign in'),
       ),
       body: _Body(),
     );

@@ -19,15 +19,30 @@ class _BottomNavigationBar extends StatelessWidget {
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(
-          title: Text('Home'),
+          title: Text(
+            'Home',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           icon: Icon(LineIcons.home),
         ),
         BottomNavigationBarItem(
-          title: Text('Order'),
+          title: Text(
+            'Order',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           icon: Icon(LineIcons.receipt),
         ),
         BottomNavigationBarItem(
-          title: Text('History'),
+          title: Text(
+            'History',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           icon: Icon(LineIcons.history),
         ),
       ],

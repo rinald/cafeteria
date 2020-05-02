@@ -17,7 +17,6 @@ List<Widget> _themeOptions(
         RadioListTile(
           activeColor: Theme.of(context).accentColor,
           title: Text(title),
-          secondary: title == 'Dark' ? Icon(LineIcons.moon) : null,
           value: themeMode,
           groupValue: _themeMode.value,
           onChanged: (ThemeMode themeMode) => _themeMode.value = themeMode,
@@ -60,7 +59,12 @@ class SettingsScreen extends StatelessWidget {
                 children: <Widget>[
                   Icon(LineIcons.alternate_sign_out),
                   Spacer(),
-                  Text('Log Out'),
+                  Text(
+                    'Sign out',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Spacer(),
                 ],
               ),

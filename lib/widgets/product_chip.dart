@@ -30,7 +30,12 @@ class ProductChip extends StatelessWidget {
             ? Theme.of(context).primaryColor
             : Theme.of(context).accentColor,
       ),
-      label: Text(category.string),
+      label: Text(
+        category.string,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       selected: _viewController.index == allCategories.indexOf(category),
       onSelected: (_) =>
           _viewController.index = allCategories.indexOf(category),

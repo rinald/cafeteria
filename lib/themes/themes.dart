@@ -6,12 +6,10 @@ import './colors.dart';
 
 final baseLightTheme = ThemeData(
   brightness: Brightness.light,
-  platform: TargetPlatform.iOS,
 );
 
 final baseDarkTheme = ThemeData(
   brightness: Brightness.dark,
-  platform: TargetPlatform.iOS,
 );
 
 final TextTheme lightTextTheme =

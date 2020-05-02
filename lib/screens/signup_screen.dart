@@ -47,7 +47,12 @@ class _Body extends StatelessWidget {
             Container(
               width: double.infinity,
               child: RaisedButton(
-                child: Text('Sign Up'),
+                child: Text(
+                  'Sign up',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () {
                   if (_passwordRetypeController.text ==
                       _passwordController.text) {
@@ -78,7 +83,7 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Sign Up'),
+        title: Text('Sign up'),
       ),
       body: _Body(),
     );

@@ -52,7 +52,12 @@ class InitialScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(LineIcons.user),
                           Spacer(),
-                          Text('Login'),
+                          Text(
+                            'Sign in',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                           Spacer(),
                         ],
                       ),

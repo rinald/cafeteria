@@ -28,10 +28,18 @@ class OrderView extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     '${_orderBloc.orderTotal} LEK',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   RaisedButton(
-                    child: Text('Clear'),
+                    child: Text(
+                      'Clear',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     onPressed: _orderBloc.order.isEmpty
                         ? null
                         : () {
@@ -78,7 +86,12 @@ class OrderView extends StatelessWidget {
                     LineIcons.money_bill,
                     size: 30,
                   ),
-                  Text('${_orderBloc.funds} LEK'),
+                  Text(
+                    '${_orderBloc.funds} LEK',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
             ),

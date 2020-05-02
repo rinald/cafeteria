@@ -28,11 +28,16 @@ class HistoryView extends StatelessWidget {
                     'Total: ${_orderBloc.allOrdersTotal} LEK',
                     style: TextStyle(
                       fontSize: 18,
-                      // fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   RaisedButton(
-                    child: Text('Clear'),
+                    child: Text(
+                      'Clear',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     onPressed: _orderBloc.orders.isEmpty
                         ? null
                         : () {
