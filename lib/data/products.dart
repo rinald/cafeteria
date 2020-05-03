@@ -16,7 +16,7 @@ const products = [
   Product(
     category: Category.dish,
     imagePath: 'chicken_pasta.jpg',
-    displayName: 'Pasta with Chicken',
+    displayName: 'Chicken Pasta',
     price: 250,
   ),
   Product(
@@ -36,6 +36,18 @@ const products = [
     imagePath: 'fries.jpg',
     displayName: 'French Fries',
     price: 70,
+  ),
+  Product(
+    category: Category.snack,
+    imagePath: 'apple.jpg',
+    displayName: 'Apple',
+    price: 10,
+  ),
+  Product(
+    category: Category.snack,
+    imagePath: 'orange.jpg',
+    displayName: 'Orange',
+    price: 10,
   ),
   Product(
     category: Category.snack,

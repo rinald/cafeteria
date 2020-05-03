@@ -7,7 +7,7 @@ class OrderBloc with ChangeNotifier {
 
   Map<Product, int> _order = {};
 
-  double _funds = 1000;
+  double _funds = 2000;
   double _orderTotal = 0;
   double _allOrdersTotal = 0;
 

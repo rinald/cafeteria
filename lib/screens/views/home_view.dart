@@ -45,7 +45,7 @@ class HomeView extends StatelessWidget {
                 items: {
                   Category.all: LineIcons.compass,
                   Category.dish: LineIcons.utensils,
-                  Category.snack: LineIcons.hamburger,
+                  Category.snack: LineIcons.fruit_apple,
                   Category.drink: LineIcons.coffee,
                 },
               ),

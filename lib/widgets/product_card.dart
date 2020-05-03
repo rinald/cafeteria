@@ -20,14 +20,14 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           AspectRatio(
-            aspectRatio: 2,
+            aspectRatio: 1.7,
             child: Image.asset(
               'assets/products/${product.imagePath}',
               fit: BoxFit.fitWidth,
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(16.0, 12.0, 8.0, 8.0),
+            padding: EdgeInsets.fromLTRB(10.0, 8.0, 4.0, 4.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -38,7 +38,6 @@ class ProductCard extends StatelessWidget {
                     // fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8.0),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
