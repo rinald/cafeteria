@@ -258,41 +258,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3B80C3931E831B6300D905FE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>App.framework</string>
-			<key>path</key>
-			<string>Flutter/App.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3B80C3941E831B6300D905FE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3B80C3931E831B6300D905FE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3B80C3951E831B6300D905FE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3B80C3931E831B6300D905FE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>CodeSignOnCopy</string>
-					<string>RemoveHeadersOnCopy</string>
-				</array>
-			</dict>
-		</dict>
 		<key>48E2B3A072E262DAD896DD35</key>
 		<dict>
 			<key>children</key>
@@ -313,11 +278,9 @@
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>name</key>
-			<string>GoogleService-Info.plist</string>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>../../../Downloads/GoogleService-Info.plist</string>
+			<string>GeneratedPluginRegistrant.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -437,7 +400,6 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 			<string>10</string>
 			<key>files</key>
 			<array>
-				<string>3B80C3951E831B6300D905FE</string>
 				<string>9705A1C71CF904A300538489</string>
 			</array>
 			<key>isa</key>
@@ -473,7 +435,6 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 		<dict>
 			<key>children</key>
 			<array>
-				<string>3B80C3931E831B6300D905FE</string>
 				<string>3B3967151E833CAA004F5970</string>
 				<string>9740EEBA1CF902C7004384FC</string>
 				<string>9740EEB21CF90195004384FC</string>
@@ -649,7 +610,6 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 			<key>files</key>
 			<array>
 				<string>9705A1C61CF904A100538489</string>
-				<string>3B80C3941E831B6300D905FE</string>
 				<string>BDCF74AFCD17B645B1E53C31</string>
 			</array>
 			<key>isa</key>
@@ -1199,22 +1159,13 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 			<key>files</key>
 			<array/>
 			<key>inputPaths</key>
-			<array>
-				<string>${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh</string>
-				<string>${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework</string>
-				<string>${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework</string>
-				<string>${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework</string>
-			</array>
+			<array/>
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
 			<key>name</key>
 			<string>[CP] Embed Pods Frameworks</string>
 			<key>outputPaths</key>
-			<array>
-				<string>${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework</string>
-				<string>${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework</string>
-				<string>${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework</string>
-			</array>
+			<array/>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 			<key>shellPath</key>
@@ -1235,8 +1186,6 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
 			<key>path</key>
 			<string>Pods</string>
 			<key>sourceTree</key>
